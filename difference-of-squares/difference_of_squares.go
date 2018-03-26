@@ -8,7 +8,8 @@ func SumOfSquares(n int) int {
 
 // SquareOfSums square of the sums
 func SquareOfSums(n int) int {
-	return ((n * (n + 1)) / 2 * (n * (n + 1)) / 2)
+	n = (n * (n + 1)) / 2
+	return n * n
 }
 
 // Difference finds the difference of sqsums ans sumofsqs
