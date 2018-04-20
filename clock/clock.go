@@ -22,9 +22,6 @@ type Clock struct {
 
 // New returns a new Clock initialized with given values
 func New(h, m int) Clock {
-	if m == -40 {
-		fmt.Print("wow")
-	}
 	//shift extra hours to h
 	h += m / 60
 	//prune minutes
@@ -62,12 +59,8 @@ func (c Clock) Add(minutes int) Clock {
 func (c Clock) Subtract(minutes int) Clock {
 	// get total hours to remove
 	hours := minutes / 60
-	pastHour := c.hour - hours
 	hours %= 24
-
-	if pastHour < 0 {
-		pastHour += 24
-	}
+	pastHour := c.hour - hours
 
 	// get total minutes to sub
 	minutes %= 60
@@ -75,6 +68,11 @@ func (c Clock) Subtract(minutes int) Clock {
 
 	if pastMin < 0 {
 		pastMin += 60
+		pastHour--
+	}
+
+	if pastHour < 0 {
+		pastHour += 24
 	}
 
 	return Clock{hour: pastHour, minute: pastMin}
