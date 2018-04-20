@@ -48,7 +48,6 @@ func (c Clock) Add(minutes int) Clock {
 	totalMin := c.minute + minutes
 	// add mins
 	futureMin := totalMin % 60
-	futureMin += c.minute
 
 	//add hours
 	futureHour := totalMin / 60
